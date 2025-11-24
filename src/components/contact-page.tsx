@@ -48,7 +48,7 @@ export function ContactPage() {
 						Contact Us
 					</h1>
 					<p className="text-muted-foreground mb-5 text-base">
-						Contact the support team at Asme.
+						Contact the support team.
 					</p>
 				</div>
 				<BorderSeparator />
@@ -72,7 +72,7 @@ export function ContactPage() {
 						description="Drop by our office for a chat."
 					>
 						<span className="font-mono text-base font-medium tracking-wide">
-							Office # 100, 101 Second Floor Kohinoor 1, Faisalabad, Pakistan
+							Office # not opened yet
 						</span>
 					</Box>
 					<Box
