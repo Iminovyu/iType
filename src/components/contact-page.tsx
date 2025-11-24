@@ -14,9 +14,9 @@ import {
 } from 'lucide-react';
 import { Button, type ButtonProps } from '@/components/ui/button';
 
-const APP_EMAIL = 'mail@example.com';
-const APP_PHONE = '+92 300 1234567';
-const APP_PHONE_2 = '+92 321 9876543';
+const APP_EMAIL = 'we.itype@comp.info';
+const APP_PHONE = '+998 93 242 26 07';
+const APP_PHONE_2 = '+9998 90 385 34 71';
 
 export function ContactPage() {
 	const socialLinks = [
