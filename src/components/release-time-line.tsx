@@ -250,7 +250,7 @@ export default function ProjectsTimeLine({
                                     key={idx}
                                     className="flex items-start gap-2 text-sm text-muted-foreground"
                                   >
-                                    <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary/60 flex-shrink-0" />
+                                    <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary/60 shrink-0" />
                                     <span className="leading-relaxed">
                                       {item}
                                     </span>
