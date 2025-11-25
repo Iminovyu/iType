@@ -31,7 +31,7 @@ export default function Navbar() {
           flex flex-col items-center justify-center gap-8 px-8 py-3
           rounded-2xl
           backdrop-blur-xl bg-white/80 dark:bg-neutral-900/40
-          shadow-lg ring-1 ring-black/10
+          shadow-xs ring-1 ring-black/10
           transition-[height] duration-300 ease-out
           ${open ? "h-auto pb-4" : "h-[60px]"}
         `}
