@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import { ContactPage } from "@/components/contact-page";
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import TeamSection from "@/components/Team";
 const Home = () => {
     const location = useLocation();
 
@@ -95,7 +96,7 @@ const Home = () => {
               description="End-to-end project delivery: from MVP to scalable solutions with ongoing support and optimization."
             />
           </ul>
-          <div className="flex justify-center pt-6">
+          <div className="flex justify-center pt-12">
             <Link
               to="/projects"
               className="group inline-flex items-center gap-2 rounded-full bg-blue-700 px-6 py-3 text-white transition-all hover:bg-blue-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
@@ -107,7 +108,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="team">team</section>
+      <section id="team">
+        <TeamSection></TeamSection>
+      </section>
 
       <section id="services">
         <div className="container px-4 mx-auto">
