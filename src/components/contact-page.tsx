@@ -43,8 +43,8 @@ export function ContactPage() {
 					<div className="bg-[radial-gradient(50%_50%_at_50%_50%,--theme(--color-foreground/.04)_0,--theme(--color-foreground/.01)_80%,transparent_100%)] absolute top-0 left-0 h-320 w-60 [translate:5%_-50%] -rotate-45 rounded-full" />
 					<div className="bg-[radial-gradient(50%_50%_at_50%_50%,--theme(--color-foreground/.04)_0,--theme(--color-foreground/.01)_80%,transparent_100%)] absolute top-0 left-0 h-320 w-60 -translate-y-87.5 -rotate-45 rounded-full" />
 				</div>
-				<div className="flex grow flex-col justify-center px-4 md:px-6 pt-32 pb-16">
-					<h1 className=" text-4xl font-bold md:text-5xl">
+				<div className="flex max-w-fit items-center mx-auto grow flex-col justify-center px-4 md:px-6 pt-32 pb-16">
+					<h1 className=" text-4xl mb-2 font-bold md:text-5xl">
 						Contact Us
 					</h1>
 					<p className="text-muted-foreground mb-5 text-base">

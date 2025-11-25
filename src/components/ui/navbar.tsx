@@ -5,6 +5,7 @@ export default function Navbar() {
   const links = [
     { name: "About",    id: "about"    },
     { name: "Projects", id: "projects" },
+    { name: "Team Members", id: "team" },
     { name: "Services", id: "services" },
     { name: "Contact",  id: "contact"  },
   ];
