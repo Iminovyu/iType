@@ -16,7 +16,7 @@ import { Button, type ButtonProps } from '@/components/ui/button';
 
 const APP_EMAIL = 'we.itype@comp.info';
 const APP_PHONE = '+998 93 242 26 07';
-const APP_PHONE_2 = '+9998 90 385 34 71';
+const APP_PHONE_2 = '+998 90 385 34 71';
 
 export function ContactPage() {
 	const socialLinks = [
@@ -89,7 +89,7 @@ export function ContactPage() {
 								>
 									{APP_PHONE}
 								</a>
-								<CopyButton className="size-6" test="+923207376123" />
+								<CopyButton className="size-6" test={APP_PHONE} />
 							</div>
 							<div className="flex items-center gap-x-2">
 								<a
@@ -98,7 +98,7 @@ export function ContactPage() {
 								>
 									{APP_PHONE_2}
 								</a>
-								<CopyButton className="size-6" test="+923045771644" />
+								<CopyButton className="size-6" test={APP_PHONE_2} />
 							</div>
 						</div>
 					</Box>

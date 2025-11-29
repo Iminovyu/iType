@@ -1,9 +1,24 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
-import { useState } from "react";
+import { ArrowLeft, ExternalLink, Image, Lock } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+
+  // Прокрутка наверх при загрузке страницы
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Модальное окно для изображений
+  const openImageModal = (projectId: number) => {
+    setSelectedProject(projectId);
+  };
+
+  const closeImageModal = () => {
+    setSelectedProject(null);
+  };
 
   // Цвета соответствующие логотипам технологий
   const tagColors: { [key: string]: string } = {
@@ -64,63 +79,94 @@ const Projects = () => {
       title: "CRM System for Retail",
       description: "Custom CRM solution that increased sales conversion by 45% for a retail chain.",
       category: "crm",
-      tags: ["CRM", "React", "Node.js"]
+      tags: ["CRM", "React", "Node.js"],
+      link: "/projects/crm-retail",
+      external: false,
+      hasImages: true,
+      images: ["/images/projects/crm-1.jpg", "/images/projects/crm-2.jpg"]
     },
     {
       id: 2,
       title: "E-commerce Platform",
       description: "Scalable online store with integrated payment processing and inventory management.",
       category: "ecommerce", 
-      tags: ["E-commerce", "Next.js", "MongoDB"]
+      tags: ["E-commerce", "Next.js", "MongoDB"],
+      link: "/projects/ecommerce-platform",
+      external: false,
+      hasImages: true,
+      images: ["/images/projects/ecommerce-1.jpg", "/images/projects/ecommerce-2.jpg"]
     },
     {
       id: 3,
       title: "Mobile Game App",
       description: "Engaging puzzle game with over 100k downloads on app stores.",
       category: "game",
-      tags: ["Games", "React Native", "Unity"]
+      tags: ["Games", "React Native", "Unity"],
+      link: "https://play.google.com/store/apps/details?id=com.example.game",
+      external: true,
     },
     {
       id: 4,
       title: "Analytics Dashboard",
       description: "Real-time business intelligence dashboard with predictive analytics.",
       category: "crm",
-      tags: ["CRM", "TypeScript", "Python"]
+      tags: ["CRM", "TypeScript", "Python"],
+      link: "/projects/analytics-dashboard",
+      external: false,
+      hasImages: true,
+      images: ["/images/projects/analytics-1.jpg", "/images/projects/analytics-2.jpg"]
     },
     {
       id: 5,
       title: "Online Marketplace",
       description: "Multi-vendor e-commerce platform with advanced search and filtering.",
       category: "ecommerce",
-      tags: ["E-commerce", "Vue.js", "PostgreSQL"]
+      tags: ["E-commerce", "Vue.js", "PostgreSQL"],
+      link: "https://marketplace-example.com",
+      external: true,
+      hasImages: false
     },
     {
       id: 6,
       title: "AR Gaming Experience",
       description: "Augmented reality mobile game with social features and in-app purchases.",
       category: "game",
-      tags: ["Games", "Unity", "AR Core"]
+      tags: ["Games", "Unity", "AR Core"],
+      link: "/projects/ar-gaming",
+      external: false,
+      hasImages: true,
+      images: ["/images/projects/ar-1.jpg", "/images/projects/ar-2.jpg"]
     },
     {
       id: 7,
       title: "Corporate Website",
       description: "Modern corporate website with blog and contact management system.",
       category: "other",
-      tags: ["Web", "WordPress", "PHP"]
+      tags: ["Web", "WordPress", "PHP"],
+      link: "https://corporate-example.com",
+      external: true,
+      hasImages: false
     },
     {
       id: 8,
       title: "Mobile Banking App",
       description: "Secure mobile banking application with biometric authentication.",
       category: "other",
-      tags: ["Finance", "React Native", "Security"]
+      tags: ["Finance", "React Native", "Security"],
+      link: "/projects/banking-app",
+      external: false,
+      hasImages: true,
+      images: ["/images/projects/banking-1.jpg", "/images/projects/banking-2.jpg"]
     },
     {
       id: 9,
       title: "Educational Platform",
       description: "Online learning platform with video courses and progress tracking.",
       category: "other",
-      tags: ["Education", "Vue.js", "Firebase"]
+      tags: ["Education", "Vue.js", "Firebase"],
+      link: "https://learn-example.com",
+      external: true,
+      hasImages: false
     }
   ];
 
@@ -129,7 +175,7 @@ const Projects = () => {
     { key: "crm", label: "CRM" },
     { key: "ecommerce", label: "E-commerce" },
     { key: "game", label: "Game" },
-    { key: "mixed", label: "Mixed" }
+    { key: "other", label: "Other" }
   ];
 
   const filteredProjects = projects.filter(project => {
@@ -183,14 +229,14 @@ const Projects = () => {
         {/* Контент страницы */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project) => (
-            <div key={project.id} className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+            <div key={project.id} className="bg-gray-50 rounded-lg p-6 border border-gray-200 flex flex-col">
               <h3 className="text-xl font-semibold mb-3">
                 {project.title}
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 mb-4 flex-grow">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag, index) => (
                   <span 
                     key={index}
@@ -199,6 +245,41 @@ const Projects = () => {
                     {tag}
                   </span>
                 ))}
+              </div>
+              
+              {/* Кнопки действий */}
+              <div className="flex gap-2 flex-wrap">
+                {/* Кнопка View Images */}
+                {project.hasImages && (
+                  <button
+                    onClick={() => openImageModal(project.id)}
+                    className="inline-flex items-center gap-2 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium"
+                  >
+                    <Image className="h-3 w-3" />
+                    View Images
+                  </button>
+                )}
+                
+                {/* Кнопка View Project */}
+                {project.external ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                  >
+                    View Project
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                ) : (
+                  <Link
+                    to={project.link}
+                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                  >
+                    View Project
+                    <ExternalLink className="h-3 w-3" />
+                  </Link>
+                )}
               </div>
             </div>
           ))}
@@ -221,6 +302,48 @@ const Projects = () => {
           </Link>
         </div>
       </div>
+
+      {/* Модальное окно для изображений */}
+      {selectedProject && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-semibold">
+                  {projects.find(p => p.id === selectedProject)?.title} - Screenshots
+                </h3>
+                <button
+                  onClick={closeImageModal}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  ✕
+                </button>
+              </div>
+              
+              <div className="grid gap-4">
+                {projects.find(p => p.id === selectedProject)?.images?.map((image, index) => (
+                  <div key={index} className="border rounded-lg overflow-hidden">
+                    <img 
+                      src={image} 
+                      alt={`Screenshot ${index + 1}`}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              <div className="mt-6 text-center">
+                <button
+                  onClick={closeImageModal}
+                  className="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
