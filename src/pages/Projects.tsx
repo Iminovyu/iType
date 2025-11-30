@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Image, Lock } from "lucide-react";
+import { ArrowLeft, ExternalLink, Image, } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Projects = () => {
