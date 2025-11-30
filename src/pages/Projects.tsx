@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Image, } from "lucide-react";
+import { ArrowLeft, ExternalLink, Image } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Projects = () => {
@@ -23,151 +23,157 @@ const Projects = () => {
   // Цвета соответствующие логотипам технологий
   const tagColors: { [key: string]: string } = {
     // React - синий
-    "React": "bg-blue-100 text-blue-800 border border-blue-200",
+    React: "bg-blue-100 text-blue-800 border border-blue-200",
     "React Native": "bg-blue-100 text-blue-800 border border-blue-200",
-    
+
     // Node.js - зеленый
     "Node.js": "bg-green-100 text-green-800 border border-green-200",
-    
+
     // Next.js - черный
     "Next.js": "bg-black text-white border border-gray-800",
-    
+
     // MongoDB - зеленый
-    "MongoDB": "bg-green-100 text-green-800 border border-green-200",
-    
+    MongoDB: "bg-green-100 text-green-800 border border-green-200",
+
     // Vue.js - зеленый
     "Vue.js": "bg-green-100 text-green-800 border border-green-200",
-    
+
     // TypeScript - синий
-    "TypeScript": "bg-blue-100 text-blue-800 border border-blue-200",
-    
+    TypeScript: "bg-blue-100 text-blue-800 border border-blue-200",
+
     // Python - синий/желтый (используем синий для консистентности)
-    "Python": "bg-blue-100 text-blue-800 border border-blue-200",
-    
+    Python: "bg-blue-100 text-blue-800 border border-blue-200",
+
     // PostgreSQL - синий
-    "PostgreSQL": "bg-blue-100 text-blue-800 border border-blue-200",
-    
+    PostgreSQL: "bg-blue-100 text-blue-800 border border-blue-200",
+
     // Unity - черный
-    "Unity": "bg-gray-800 text-white border border-gray-700",
-    
+    Unity: "bg-gray-800 text-white border border-gray-700",
+
     "AR Core": "bg-purple-100 text-purple-800 border border-purple-200",
-    
+
     // WordPress - синий
-    "WordPress": "bg-blue-100 text-blue-800 border border-blue-200",
-    
+    WordPress: "bg-blue-100 text-blue-800 border border-blue-200",
+
     // PHP - фиолетовый
-    "PHP": "bg-purple-100 text-purple-800 border border-purple-200",
-    
+    PHP: "bg-purple-100 text-purple-800 border border-purple-200",
+    CSS: "bg-blue-50 text-blue-900 border border-blue-200",
+
     // Firebase - оранжевый
-    "Firebase": "bg-orange-100 text-orange-800 border border-orange-200",
-    
+    Firebase: "bg-orange-100 text-orange-800 border border-orange-200",
+    HTML: "bg-orange-100 text-orange-800 border border-orange-200",
+    JavaScript: "bg-yellow-100 text-yellow-800 border border-yellow-200",
+
     // Категории проектов
-    "CRM": "bg-blue-100 text-blue-800 border border-blue-200",
+    CRM: "bg-blue-100 text-blue-800 border border-blue-200",
     "E-commerce": "bg-green-100 text-green-800 border border-green-200",
-    "Games": "bg-purple-100 text-purple-800 border border-purple-200",
-    
+    Games: "bg-purple-100 text-purple-800 border border-purple-200",
+    Music: "bg-pink-100 text-pink-800 border border-pink-200",
+
     // Другие
-    "Web": "bg-gray-100 text-gray-800 border border-gray-300",
-    "Finance": "bg-emerald-100 text-emerald-800 border border-emerald-200",
-    "Security": "bg-red-100 text-red-800 border border-red-200",
-    "Education": "bg-indigo-100 text-indigo-800 border border-indigo-200"
+    Web: "bg-gray-100 text-gray-800 border border-gray-300",
+    Finance: "bg-emerald-100 text-emerald-800 border border-emerald-200",
+    Security: "bg-red-100 text-red-800 border border-red-200",
+    Education: "bg-indigo-100 text-indigo-800 border border-indigo-200",
   };
 
   const projects = [
     {
       id: 1,
-      title: "CRM System for Retail",
-      description: "Custom CRM solution that increased sales conversion by 45% for a retail chain.",
+      title: "Litech CRM",
+      description:
+        "CRM system designed for IT academie to manage students, courses, and educational workflows.",
       category: "crm",
-      tags: ["CRM", "React", "Node.js"],
-      link: "/projects/crm-retail",
-      external: false,
+      tags: ["CRM", "Education", "React", "Node.js"],
+      link: "https://litech-crm.vercel.app/",
+      external: true,
       hasImages: true,
-      images: ["/images/projects/crm-1.jpg", "/images/projects/crm-2.jpg"]
-    },
-    {
-      id: 2,
-      title: "E-commerce Platform",
-      description: "Scalable online store with integrated payment processing and inventory management.",
-      category: "ecommerce", 
-      tags: ["E-commerce", "Next.js", "MongoDB"],
-      link: "/projects/ecommerce-platform",
-      external: false,
-      hasImages: true,
-      images: ["/images/projects/ecommerce-1.jpg", "/images/projects/ecommerce-2.jpg"]
+      images: [
+        "/litech-crm.png",
+        "/litech-crm-2.png",
+        "/litech-crm-3.png",
+      ],
     },
     {
       id: 3,
-      title: "Mobile Game App",
-      description: "Engaging puzzle game with over 100k downloads on app stores.",
+      title: "CSS Color Game",
+      description:
+        "Interactive browser game for learning CSS colors through fun challenges.",
       category: "game",
-      tags: ["Games", "React Native", "Unity"],
-      link: "https://play.google.com/store/apps/details?id=com.example.game",
+      tags: ["Games", "CSS", "React"],
+      link: "https://css-color-game.vercel.app/",
       external: true,
     },
     {
       id: 4,
-      title: "Analytics Dashboard",
-      description: "Real-time business intelligence dashboard with predictive analytics.",
-      category: "crm",
-      tags: ["CRM", "TypeScript", "Python"],
-      link: "/projects/analytics-dashboard",
-      external: false,
-      hasImages: true,
-      images: ["/images/projects/analytics-1.jpg", "/images/projects/analytics-2.jpg"]
+      title: "Emulator",
+      description:
+        "Collection of nostalgic games built for modern web browsers.",
+      category: "game",
+      tags: ["Games", "React"],
+      link: "https://emulator-self.vercel.app/",
+      external: true,
     },
     {
       id: 5,
-      title: "Online Marketplace",
-      description: "Multi-vendor e-commerce platform with advanced search and filtering.",
-      category: "ecommerce",
-      tags: ["E-commerce", "Vue.js", "PostgreSQL"],
-      link: "https://marketplace-example.com",
+      title: "Drify Space",
+      description:
+        "Space-themed browser game with immersive gameplay and cosmic exploration.",
+      category: "game",
+      tags: ["Games", "React"],
+      link: "https://drify-space.vercel.app/",
       external: true,
-      hasImages: false
     },
     {
       id: 6,
-      title: "AR Gaming Experience",
-      description: "Augmented reality mobile game with social features and in-app purchases.",
+      title: "Pokemon Box Game",
+      description:
+        "Simple and fun browser game where you open boxes to discover random Pokemons.",
       category: "game",
-      tags: ["Games", "Unity", "AR Core"],
-      link: "/projects/ar-gaming",
-      external: false,
-      hasImages: true,
-      images: ["/images/projects/ar-1.jpg", "/images/projects/ar-2.jpg"]
+      tags: ["Games", "HTML", "JavaScript"],
+      link: "https://pokemon-game-itype.vercel.app/",
+      external: true,
     },
     {
       id: 7,
-      title: "Corporate Website",
-      description: "Modern corporate website with blog and contact management system.",
-      category: "other",
-      tags: ["Web", "WordPress", "PHP"],
-      link: "https://corporate-example.com",
+      title: "Brick Breaker Game",
+      description:
+        "Classic brick breaker arcade game with smooth controls and multiple levels.",
+      category: "game",
+      tags: ["Games", "React"],
+      link: "https://brick-breaker-itype.vercel.app/",
       external: true,
-      hasImages: false
     },
     {
       id: 8,
-      title: "Mobile Banking App",
-      description: "Secure mobile banking application with biometric authentication.",
+      title: "Focus Timer with Animals",
+      description:
+        "Productivity website with focus timer and calming animal animations.",
       category: "other",
-      tags: ["Finance", "React Native", "Security"],
-      link: "/projects/banking-app",
-      external: false,
-      hasImages: true,
-      images: ["/images/projects/banking-1.jpg", "/images/projects/banking-2.jpg"]
+      tags: ["Timer", "React"],
+      link: "https://focus-anim.vercel.app/",
+      external: true,
     },
     {
       id: 9,
-      title: "Educational Platform",
-      description: "Online learning platform with video courses and progress tracking.",
+      title: "Music Player",
+      description:
+        "Web-based music player with playlist management and audio controls.",
       category: "other",
-      tags: ["Education", "Vue.js", "Firebase"],
-      link: "https://learn-example.com",
+      tags: ["Music", "React"],
+      link: "https://music-player-itype.vercel.app/",
       external: true,
-      hasImages: false
-    }
+    },
+    {
+      id: 10,
+      title: "Earworm Studio",
+      description:
+        "Interactive music studio website for creating audio tracks.",
+      category: "other",
+      tags: ["Music", "React"],
+      link: "https://earworm-studio.vercel.app/",
+      external: true,
+    },
   ];
 
   const filters = [
@@ -175,10 +181,10 @@ const Projects = () => {
     { key: "crm", label: "CRM" },
     { key: "ecommerce", label: "E-commerce" },
     { key: "game", label: "Game" },
-    { key: "other", label: "Other" }
+    { key: "other", label: "Other" },
   ];
 
-  const filteredProjects = projects.filter(project => {
+  const filteredProjects = projects.filter((project) => {
     if (activeFilter === "all") return true;
     if (activeFilter === "mixed") return project.category === "other";
     return project.category === activeFilter;
@@ -229,24 +235,27 @@ const Projects = () => {
         {/* Контент страницы */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project) => (
-            <div key={project.id} className="bg-gray-50 rounded-lg p-6 border border-gray-200 flex flex-col">
-              <h3 className="text-xl font-semibold mb-3">
-                {project.title}
-              </h3>
+            <div
+              key={project.id}
+              className="bg-gray-50 rounded-lg p-6 border border-gray-200 flex flex-col"
+            >
+              <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
               <p className="text-gray-600 mb-4 flex-grow">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag, index) => (
-                  <span 
+                  <span
                     key={index}
-                    className={`px-2 py-1 rounded text-sm font-medium ${getTagColor(tag)}`}
+                    className={`px-2 py-1 rounded text-sm font-medium ${getTagColor(
+                      tag
+                    )}`}
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-              
+
               {/* Кнопки действий */}
               <div className="flex gap-2 flex-wrap">
                 {/* Кнопка View Images */}
@@ -259,7 +268,7 @@ const Projects = () => {
                     View Images
                   </button>
                 )}
-                
+
                 {/* Кнопка View Project */}
                 {project.external ? (
                   <a
@@ -310,7 +319,8 @@ const Projects = () => {
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-semibold">
-                  {projects.find(p => p.id === selectedProject)?.title} - Screenshots
+                  {projects.find((p) => p.id === selectedProject)?.title} -
+                  Screenshots
                 </h3>
                 <button
                   onClick={closeImageModal}
@@ -319,19 +329,24 @@ const Projects = () => {
                   ✕
                 </button>
               </div>
-              
+
               <div className="grid gap-4">
-                {projects.find(p => p.id === selectedProject)?.images?.map((image, index) => (
-                  <div key={index} className="border rounded-lg overflow-hidden">
-                    <img 
-                      src={image} 
-                      alt={`Screenshot ${index + 1}`}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                ))}
+                {projects
+                  .find((p) => p.id === selectedProject)
+                  ?.images?.map((image, index) => (
+                    <div
+                      key={index}
+                      className="border rounded-lg overflow-hidden"
+                    >
+                      <img
+                        src={image}
+                        alt={`Screenshot ${index + 1}`}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  ))}
               </div>
-              
+
               <div className="mt-6 text-center">
                 <button
                   onClick={closeImageModal}
